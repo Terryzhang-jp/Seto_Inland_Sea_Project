@@ -44,7 +44,7 @@ api.interceptors.response.use(
 export class FerryAPI {
   // 搜索航线
   static async searchRoutes(params: RouteSearchParams): Promise<APIResponse<FerryRoute[]>> {
-    const response = await api.get('/api/v1/routes', { params });
+    const response = await api.get('/api/v1/routes/', { params });
     return response.data;
   }
 
@@ -57,7 +57,7 @@ export class FerryAPI {
   // 获取所有港口
   static async getPorts(search?: string): Promise<APIResponse<Port[]>> {
     const params = search ? { search } : {};
-    const response = await api.get('/api/v1/ports', { params });
+    const response = await api.get('/api/v1/ports/', { params });
     return response.data;
   }
 
@@ -70,7 +70,7 @@ export class FerryAPI {
   // 获取所有公司
   static async getCompanies(search?: string): Promise<APIResponse<Company[]>> {
     const params = search ? { search } : {};
-    const response = await api.get('/api/v1/companies', { params });
+    const response = await api.get('/api/v1/companies/', { params });
     return response.data;
   }
 
