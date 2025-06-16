@@ -93,6 +93,44 @@ async def health_check():
         logger.error(f"Health check failed: {e}")
         raise HTTPException(status_code=503, detail="服务不可用")
 
+@app.get("/debug/data-status", response_model=APIResponse, summary="数据加载状态调试")
+async def debug_data_status():
+    """
+    调试端点：检查数据加载状态
+    """
+    from .core.data_loader import data_loader
+    import os
+
+    status = {
+        "current_working_directory": os.getcwd(),
+        "base_dir": str(settings.BASE_DIR),
+        "data_dir": str(settings.DATA_DIR),
+        "data_dir_exists": settings.DATA_DIR.exists(),
+        "timetable_loaded": data_loader.timetable_df is not None,
+        "companies_loaded": data_loader.companies_df is not None,
+        "ports_loaded": data_loader.ports_df is not None,
+        "fares_loaded": data_loader.fares_df is not None,
+    }
+
+    if data_loader.timetable_df is not None:
+        status["timetable_records"] = len(data_loader.timetable_df)
+    if data_loader.companies_df is not None:
+        status["companies_records"] = len(data_loader.companies_df)
+    if data_loader.ports_df is not None:
+        status["ports_records"] = len(data_loader.ports_df)
+    if data_loader.fares_df is not None:
+        status["fares_records"] = len(data_loader.fares_df)
+
+    # 列出数据目录中的文件
+    if settings.DATA_DIR.exists():
+        status["csv_files"] = [f.name for f in settings.DATA_DIR.glob("*.csv")]
+
+    return APIResponse(
+        success=True,
+        data=status,
+        message="数据状态检查完成"
+    )
+
 @app.exception_handler(Exception)
 async def global_exception_handler(request, exc):
     """
