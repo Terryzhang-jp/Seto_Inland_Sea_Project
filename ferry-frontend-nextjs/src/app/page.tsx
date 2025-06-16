@@ -6,7 +6,7 @@ import Image from 'next/image';
 import SearchForm from '../components/SearchForm';
 import RouteGroup from '../components/RouteGroup';
 import { FerryAPI } from '../lib/api';
-import { FerryRoute, RouteSearchParams, PopularRoute } from '../types';
+import { RouteSearchParams, PopularRoute } from '../types';
 import { getIslandIcon } from '../lib/islands';
 import { groupRoutesByPath, RouteGroup as RouteGroupType } from '../lib/utils';
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
