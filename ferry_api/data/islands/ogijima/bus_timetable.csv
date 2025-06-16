@@ -1,0 +1,2 @@
+transport_type,route,departure_stop,arrival_stop,departure_time,arrival_time,fare_yen,operator,notes,frequency
+no_bus,島内にバスなし,-,-,-,-,-,-,島内にバスはなく徒歩が主な移動手段,-

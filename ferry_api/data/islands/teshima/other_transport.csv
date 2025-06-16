@@ -1,0 +1,7 @@
+transport_type,service_name,location,price_yen,operating_hours,contact,notes,capacity,requirements
+car_rental,緋田石油(アケダ),家浦港,4000(4時間)/6000(1日),8:00-17:00,要確認,4人乗り・ガソリン代込み,4人,普通免許
+car_rental,緋田石油(アケダ),家浦港,8000(4時間)/12000(1日),8:00-17:00,要確認,7人乗り・ガソリン代込み,7人,普通免許
+electric_scooter,SETOUCHI Karen,家浦港,要確認,要確認,要確認,電動スクーター専門,要確認,原付免許
+walking,徒歩,島内全域,0,24時間,なし,島内各所を徒歩で移動,なし,なし
+luggage_storage,豊島PP合同会社,家浦港,0,8:30-17:00,080-2943-7788,レンタサイクル利用者無料,なし,なし
+luggage_storage,緋田石油(アケダ),家浦港,0,8:00-17:00,要確認,レンタル利用者無料,なし,なし

@@ -1,0 +1,32 @@
+[
+  {
+    "departure": "高松",
+    "arrival": "直島",
+    "description": "最受欢迎的艺术岛屿路线，可欣赏现代艺术作品"
+  },
+  {
+    "departure": "高松",
+    "arrival": "豊島",
+    "description": "豊島美术馆所在地，自然与艺术的完美结合"
+  },
+  {
+    "departure": "高松",
+    "arrival": "小豆島",
+    "description": "橄榄之岛，可体验地中海风情"
+  },
+  {
+    "departure": "宇野",
+    "arrival": "直島",
+    "description": "从本州出发的便捷艺术岛屿路线"
+  },
+  {
+    "departure": "直島",
+    "arrival": "豊島",
+    "description": "艺术岛屿间的跳岛路线"
+  },
+  {
+    "departure": "高松",
+    "arrival": "女木島",
+    "description": "鬼岛传说的神秘岛屿"
+  }
+]

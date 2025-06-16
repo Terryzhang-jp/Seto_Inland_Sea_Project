@@ -1,0 +1,5 @@
+transport_type,service_name,location,price_yen,operating_hours,contact,notes,capacity,requirements
+walking,徒歩,島内全域,0,24時間,なし,島内各所を徒歩で移動,なし,なし
+luggage_storage,鬼ヶ島おにの館,女木港,要確認,8:20-17:00,087-873-0728,手荷物預かり,要確認,なし
+ferry_round_trip,めおん,高松港⇔女木港,740,要確認,087-851-2412,大人往復料金,要確認,なし
+ferry_round_trip,めおん,高松港⇔女木港,280,要確認,087-851-2412,小学生往復料金,要確認,なし
