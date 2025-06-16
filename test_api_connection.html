@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API连接测试</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .result { margin: 10px 0; padding: 10px; border-radius: 5px; }
+        .success { background-color: #d4edda; color: #155724; }
+        .error { background-color: #f8d7da; color: #721c24; }
+        button { padding: 10px 20px; margin: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>瀬户内海API连接测试</h1>
+    
+    <button onclick="testHealthCheck()">测试健康检查</button>
+    <button onclick="testPopularRoutes()">测试热门路线</button>
+    <button onclick="testCORS()">测试CORS</button>
+    
+    <div id="results"></div>
+
+    <script>
+        const API_BASE = 'https://setoinlandseaproject-production.up.railway.app';
+        
+        function addResult(message, isSuccess = true) {
+            const div = document.createElement('div');
+            div.className = `result ${isSuccess ? 'success' : 'error'}`;
+            div.textContent = message;
+            document.getElementById('results').appendChild(div);
+        }
+        
+        async function testHealthCheck() {
+            try {
+                const response = await fetch(`${API_BASE}/health`);
+                const data = await response.json();
+                addResult(`✅ 健康检查成功: ${data.message}`);
+            } catch (error) {
+                addResult(`❌ 健康检查失败: ${error.message}`, false);
+            }
+        }
+        
+        async function testPopularRoutes() {
+            try {
+                const response = await fetch(`${API_BASE}/api/v1/routes/popular`);
+                const data = await response.json();
+                addResult(`✅ 热门路线获取成功: 找到 ${data.data.length} 条路线`);
+            } catch (error) {
+                addResult(`❌ 热门路线获取失败: ${error.message}`, false);
+            }
+        }
+        
+        async function testCORS() {
+            try {
+                const response = await fetch(`${API_BASE}/api/v1/routes/popular`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Origin': 'https://seto-inland-sea-project-vpnw.vercel.app'
+                    }
+                });
+                const data = await response.json();
+                addResult(`✅ CORS测试成功: 跨域请求正常`);
+            } catch (error) {
+                addResult(`❌ CORS测试失败: ${error.message}`, false);
+            }
+        }
+    </script>
+</body>
+</html>

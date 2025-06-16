@@ -2,7 +2,12 @@ import axios from 'axios';
 import { APIResponse, FerryRoute, Port, Company, PopularRoute, RouteSearchParams, IslandTransport, IslandTransportSummary, BicycleRental } from '../types';
 
 // API基础配置
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://setoinlandseaproject-production.up.railway.app';
+
+// 调试信息
+console.log('Environment:', process.env.NODE_ENV);
+console.log('API_BASE_URL:', API_BASE_URL);
+console.log('NEXT_PUBLIC_API_URL:', process.env.NEXT_PUBLIC_API_URL);
 
 const api = axios.create({
   baseURL: API_BASE_URL,
