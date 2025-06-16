@@ -76,7 +76,7 @@ export class FerryAPI {
   }
 
   // 健康检查
-  static async healthCheck(): Promise<APIResponse<any>> {
+  static async healthCheck(): Promise<APIResponse<{ status: string; timestamp: string }>> {
     const response = await api.get('/health');
     return response.data;
   }
@@ -119,13 +119,13 @@ export class FerryAPI {
   }
 
   // 获取特定岛屿的巴士时刻表
-  static async getIslandBusSchedule(islandName: string): Promise<APIResponse<any>> {
+  static async getIslandBusSchedule(islandName: string): Promise<APIResponse<{ island_name: string; bus_schedules: unknown[] }>> {
     const response = await api.get(`/api/v1/islands/${encodeURIComponent(islandName)}/bus`);
     return response.data;
   }
 
   // 获取特定岛屿的其他交通方式
-  static async getIslandOtherTransport(islandName: string): Promise<APIResponse<any>> {
+  static async getIslandOtherTransport(islandName: string): Promise<APIResponse<{ island_name: string; other_transport: unknown[] }>> {
     const response = await api.get(`/api/v1/islands/${encodeURIComponent(islandName)}/transport/other`);
     return response.data;
   }

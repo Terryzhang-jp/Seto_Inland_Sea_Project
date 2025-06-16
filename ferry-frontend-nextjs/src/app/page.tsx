@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
+import Image from 'next/image';
 import SearchForm from '../components/SearchForm';
 import RouteGroup from '../components/RouteGroup';
 import { FerryAPI } from '../lib/api';
@@ -12,7 +13,6 @@ import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 
 export default function Home() {
   const searchParams = useSearchParams();
-  const [routes, setRoutes] = useState<FerryRoute[]>([]);
   const [routeGroups, setRouteGroups] = useState<RouteGroupType[]>([]);
   const [popularRoutes, setPopularRoutes] = useState<PopularRoute[]>([]);
   const [loading, setLoading] = useState(false);
@@ -63,7 +63,6 @@ export default function Home() {
     try {
       const response = await FerryAPI.searchRoutes(params);
       if (response.success) {
-        setRoutes(response.data);
         // 按路线分组
         const grouped = groupRoutesByPath(response.data);
         setRouteGroups(grouped);
@@ -118,9 +117,11 @@ export default function Home() {
 
         {/* 跳島主題横幅 */}
         <div className="mb-8 flex justify-center">
-          <img
+          <Image
             src="/island-hopping-banner.svg"
             alt="瀬戸内海跳島查詢"
+            width={1024}
+            height={300}
             className="w-full max-w-4xl h-auto rounded-lg shadow-lg"
           />
         </div>
@@ -237,7 +238,6 @@ export default function Home() {
             <p className="text-gray-600 mb-4">请尝试调整搜索条件</p>
             <button
               onClick={() => {
-                setRoutes([]);
                 setRouteGroups([]);
                 setCurrentSearchParams({});
               }}

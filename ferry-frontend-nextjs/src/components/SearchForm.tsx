@@ -41,7 +41,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearch, loading = false }) =>
     });
   };
 
-  const handleInputChange = (field: keyof RouteSearchParams, value: any) => {
+  const handleInputChange = (field: keyof RouteSearchParams, value: string) => {
     setFormData(prev => ({
       ...prev,
       [field]: value

@@ -72,7 +72,7 @@ export const calculateDuration = (departure: string, arrival: string): string =>
     const [depHour, depMin] = departure.split(':').map(Number);
     const [arrHour, arrMin] = arrival.split(':').map(Number);
     
-    let depMinutes = depHour * 60 + depMin;
+    const depMinutes = depHour * 60 + depMin;
     let arrMinutes = arrHour * 60 + arrMin;
     
     // 处理跨日情况
