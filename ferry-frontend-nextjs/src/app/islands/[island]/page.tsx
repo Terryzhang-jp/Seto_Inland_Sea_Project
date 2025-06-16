@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
-import { FerryAPI } from '@/lib/api';
-import { IslandTransport, BicycleRental, BusSchedule, OtherTransport } from '@/types';
+import { FerryAPI } from '../../../lib/api';
+import { IslandTransport, BicycleRental, BusSchedule, OtherTransport } from '../../../types';
 
 export default function IslandDetailPage() {
   const params = useParams();

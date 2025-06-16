@@ -1,4 +1,4 @@
-import { FerryRoute } from '@/types';
+import { FerryRoute } from '../types';
 
 export const formatTime = (time: string): string => {
   return time;

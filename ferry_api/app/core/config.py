@@ -31,8 +31,19 @@ class Settings:
     ALLOWED_ORIGINS: list = [
         "http://localhost:3000",  # React开发服务器
         "http://localhost:3001",
+        "http://localhost:3002",  # Next.js开发服务器
         "http://127.0.0.1:3000",
         "http://127.0.0.1:3001",
+        "http://127.0.0.1:3002",
+        # 生产环境域名将通过环境变量添加
     ]
+
+    # 从环境变量获取额外的允许域名
+    FRONTEND_URL: str = os.getenv("FRONTEND_URL", "")
+
+    def __post_init__(self):
+        # 如果设置了前端URL，添加到允许的origins中
+        if self.FRONTEND_URL:
+            self.ALLOWED_ORIGINS.append(self.FRONTEND_URL)
 
 settings = Settings()

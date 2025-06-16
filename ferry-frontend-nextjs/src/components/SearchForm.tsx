@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { MagnifyingGlassIcon, ArrowPathIcon } from '@heroicons/react/24/outline';
-import { RouteSearchParams } from '@/types';
+import { RouteSearchParams } from '../types';
 import IslandSelect from './IslandSelect';
 
 interface SearchFormProps {

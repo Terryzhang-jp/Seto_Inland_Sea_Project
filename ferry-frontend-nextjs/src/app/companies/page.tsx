@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { FerryAPI } from '@/lib/api';
-import { Company } from '@/types';
+import { FerryAPI } from '../../lib/api';
+import { Company } from '../../types';
 import { BuildingOfficeIcon, PhoneIcon, GlobeAltIcon } from '@heroicons/react/24/outline';
 
 export default function CompaniesPage() {

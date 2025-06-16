@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { APIResponse, FerryRoute, Port, Company, PopularRoute, RouteSearchParams, IslandTransport, IslandTransportSummary, BicycleRental } from '@/types';
+import { APIResponse, FerryRoute, Port, Company, PopularRoute, RouteSearchParams, IslandTransport, IslandTransportSummary, BicycleRental } from '../types';
 
 // API基础配置
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';

@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { FerryAPI } from '@/lib/api';
-import { IslandTransportSummary } from '@/types';
+import { FerryAPI } from '../../lib/api';
+import { IslandTransportSummary } from '../../types';
 
 export default function IslandsPage() {
   const [islands, setIslands] = useState<IslandTransportSummary[]>([]);

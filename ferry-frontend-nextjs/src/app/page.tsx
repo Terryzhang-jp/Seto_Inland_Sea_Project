@@ -2,12 +2,12 @@
 
 import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
-import SearchForm from '@/components/SearchForm';
-import RouteGroup from '@/components/RouteGroup';
-import { FerryAPI } from '@/lib/api';
-import { FerryRoute, RouteSearchParams, PopularRoute } from '@/types';
-import { getIslandIcon } from '@/lib/islands';
-import { groupRoutesByPath, RouteGroup as RouteGroupType } from '@/lib/utils';
+import SearchForm from '../components/SearchForm';
+import RouteGroup from '../components/RouteGroup';
+import { FerryAPI } from '../lib/api';
+import { FerryRoute, RouteSearchParams, PopularRoute } from '../types';
+import { getIslandIcon } from '../lib/islands';
+import { groupRoutesByPath, RouteGroup as RouteGroupType } from '../lib/utils';
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 
 export default function Home() {

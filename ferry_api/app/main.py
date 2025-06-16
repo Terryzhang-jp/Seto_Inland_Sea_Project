@@ -12,23 +12,7 @@ from .core.config import settings
 from .routers import routes, ports, companies, islands
 from .models.common import APIResponse
 
-# 导入RAG路由
-try:
-    from .routers import rag_router
-    RAG_AVAILABLE = True
-except ImportError as e:
-    import logging
-    logging.warning(f"RAG router not available: {e}")
-    RAG_AVAILABLE = False
-
-# 导入多层Agent路由
-try:
-    # from routers import multi_agent_router
-    MULTI_AGENT_AVAILABLE = False  # 暂时禁用
-except ImportError as e:
-    import logging
-    logging.warning(f"Multi-Agent router not available: {e}")
-    MULTI_AGENT_AVAILABLE = False
+# AI功能已移除
 
 # 配置日志
 logging.basicConfig(
@@ -61,23 +45,7 @@ app.include_router(ports.router, prefix=settings.API_V1_STR)
 app.include_router(companies.router, prefix=settings.API_V1_STR)
 app.include_router(islands.router, prefix=settings.API_V1_STR)
 
-# 注册RAG路由（如果可用）
-if RAG_AVAILABLE:
-    app.include_router(rag_router.router)
-    import logging
-    logging.info("RAG router registered successfully")
-else:
-    import logging
-    logging.warning("RAG router not registered - missing dependencies")
-
-# 注册多层Agent路由（如果可用）
-if MULTI_AGENT_AVAILABLE:
-    # app.include_router(multi_agent_router.router)
-    import logging
-    logging.info("Multi-Agent router registered successfully")
-else:
-    import logging
-    logging.warning("Multi-Agent router not registered - missing dependencies")
+# AI路由已移除
 
 @app.get("/", response_model=APIResponse, summary="API根路径")
 async def root():
