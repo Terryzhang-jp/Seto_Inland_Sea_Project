@@ -31,13 +31,26 @@ app = FastAPI(
 )
 
 # 添加CORS中间件
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=settings.ALLOWED_ORIGINS,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+# 在生产环境中，我们需要更灵活的CORS处理
+import os
+if os.getenv("RAILWAY_ENVIRONMENT") or os.getenv("VERCEL"):
+    # 生产环境：允许所有Vercel域名
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origin_regex=r"https://.*\.vercel\.app",
+        allow_credentials=True,
+        allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        allow_headers=["*"],
+    )
+else:
+    # 开发环境：使用配置的域名列表
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=settings.ALLOWED_ORIGINS,
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
 
 # 注册路由
 app.include_router(routes.router, prefix=settings.API_V1_STR)

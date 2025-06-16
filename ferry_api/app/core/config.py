@@ -35,6 +35,8 @@ class Settings:
         "http://127.0.0.1:3000",
         "http://127.0.0.1:3001",
         "http://127.0.0.1:3002",
+        "https://seto-inland-sea-project-vpnw.vercel.app",  # Vercel前端域名
+        "https://seto-inland-sea-project.vercel.app",  # 可能的其他Vercel域名
         # 生产环境域名将通过环境变量添加
     ]
 
