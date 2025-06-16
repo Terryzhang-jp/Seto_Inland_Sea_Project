@@ -37,6 +37,8 @@ class Settings:
         "http://127.0.0.1:3002",
         "https://seto-inland-sea-project-vpnw.vercel.app",  # Vercel前端域名
         "https://seto-inland-sea-project.vercel.app",  # 可能的其他Vercel域名
+        "https://www.jumpingsetoinlandsea.info",  # 自定义域名
+        "https://jumpingsetoinlandsea.info",  # 自定义域名（无www）
         "https://setoinlandseaproject-production.up.railway.app",  # Railway后端域名（用于健康检查等）
         # 生产环境域名将通过环境变量添加
     ]
