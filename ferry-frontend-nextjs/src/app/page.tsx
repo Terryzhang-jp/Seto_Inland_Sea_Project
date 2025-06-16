@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import SearchForm from '../components/SearchForm';
@@ -11,7 +11,8 @@ import { getIslandIcon } from '../lib/islands';
 import { groupRoutesByPath, RouteGroup as RouteGroupType } from '../lib/utils';
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 
-export default function Home() {
+// 将使用 useSearchParams 的逻辑分离到单独的组件中
+function HomeContent() {
   const searchParams = useSearchParams();
   const [routeGroups, setRouteGroups] = useState<RouteGroupType[]>([]);
   const [popularRoutes, setPopularRoutes] = useState<PopularRoute[]>([]);
@@ -249,5 +250,21 @@ export default function Home() {
         )}
       </div>
     </div>
+  );
+}
+
+// 主页面组件，包装 HomeContent 在 Suspense 中
+export default function Home() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mb-4"></div>
+          <p className="text-gray-600">加载中...</p>
+        </div>
+      </div>
+    }>
+      <HomeContent />
+    </Suspense>
   );
 }
